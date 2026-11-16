@@ -1,5 +1,10 @@
 name: Node
-
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - develop
 
 jobs:
   build:
@@ -22,3 +27,9 @@ jobs:
       - name: Check
         run: node --check src/index.js
 
+      - name: Build Tag
+        if: success()
+        run: |
+          TAG="build-${{ github.run_id }}"
+          git tag "$TAG"
+          git push origin "$TAG"
