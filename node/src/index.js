@@ -2,7 +2,7 @@ const http = require("http");
 
 const PORT = process.env.PORT || 8080;
 
-//Teste
+//Teste 2
 function sendJSON(res, status, body) {
   res.writeHead(status, { "Content-Type": "application/json" });
   res.end(JSON.stringify(body));
